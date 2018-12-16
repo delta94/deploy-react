@@ -23,7 +23,7 @@ export class Landing extends Component {
                   Create a developer profile/portfolio, share posts and get help
                   from other developers
                 </p>
-                <hr />
+                <br />
                 <Link to="/register" className="btn btn-lg btn-info mr-2">
                   Sign Up
                 </Link>
