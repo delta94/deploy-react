@@ -3,10 +3,12 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "../utils/setAuthToken";
 import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 
+const HTTP = "https://react-ngodat97.herokuapp.com";
+
 // Register User
 export const registeruser = (userData, history) => dispatch => {
   axios
-    .post("/api/users/register", userData)
+    .post(HTTP + "/api/users/register", userData)
     .then(res => history.push("/login"))
     .catch(err =>
       dispatch({
@@ -19,7 +21,7 @@ export const registeruser = (userData, history) => dispatch => {
 // Login - Get token
 export const loginUser = userData => dispatch => {
   axios
-    .post("/api/users/login", userData)
+    .post(HTTP + "/api/users/login", userData)
     .then(res => {
       const { token } = res.data;
       localStorage.setItem("jwtToken", token);
@@ -34,7 +36,6 @@ export const loginUser = userData => dispatch => {
       })
     );
 };
-
 
 // Set logged in user
 export const setCurrentUser = decoded => {

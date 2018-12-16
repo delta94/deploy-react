@@ -9,11 +9,15 @@ import {
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
+
+const HTTP = "https://react-ngodat97.herokuapp.com";
+
+
 // get current profile
 export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading());
   axios
-    .get("/api/profile")
+    .get(HTTP + "/api/profile")
     .then(res =>
       dispatch({
         type: GET_PROFILE,
@@ -32,7 +36,7 @@ export const getCurrentProfile = () => dispatch => {
 export const getProfileByHandle = handle => dispatch => {
   dispatch(setProfileLoading());
   axios
-    .get(`/api/profile/handle/${handle}`)
+    .get(HTTP + `/api/profile/handle/${handle}`)
     .then(res =>
       dispatch({
         type: GET_PROFILE,
@@ -50,7 +54,7 @@ export const getProfileByHandle = handle => dispatch => {
 // Delete experience
 export const deleteExperience = id => dispatch => {
   axios
-    .delete(`/api/profile/experience/${id}`)
+    .delete(HTTP + `/api/profile/experience/${id}`)
     .then(res =>
       dispatch({
         type: GET_PROFILE,
@@ -68,7 +72,7 @@ export const deleteExperience = id => dispatch => {
 // Delete education
 export const deleteEducation = id => dispatch => {
   axios
-    .delete(`/api/profile/education/${id}`)
+    .delete(HTTP + `/api/profile/education/${id}`)
     .then(res =>
       dispatch({
         type: GET_PROFILE,
@@ -87,7 +91,7 @@ export const deleteEducation = id => dispatch => {
 export const deleteAccount = () => async dispatch => {
   if (window.confirm("Are you sure? This can NOT be undone!")) {
     await axios
-      .delete("/api/profile")
+      .delete(HTTP + "/api/profile")
       .then(res =>
         dispatch({
           type: SET_CURRENT_USER,
@@ -109,7 +113,7 @@ export const deleteAccount = () => async dispatch => {
 export const getProfiles = () => dispatch => {
   dispatch(setProfileLoading());
   axios
-    .get(`/api/profile/all`)
+    .get(HTTP + `/api/profile/all`)
     .then(res =>
       dispatch({
         type: GET_PROFILES,
@@ -127,7 +131,7 @@ export const getProfiles = () => dispatch => {
 //create profile
 export const createProfile = (profileData, history) => dispatch => {
   axios
-    .post("/api/profile", profileData)
+    .post(HTTP + "/api/profile", profileData)
     .then(res => history.push("/dashboard"))
     .catch(err =>
       dispatch({
@@ -140,7 +144,7 @@ export const createProfile = (profileData, history) => dispatch => {
 // add exp
 export const addExpreience = (expData, history) => dispatch => {
   axios
-    .post("/api/profile/experience", expData)
+    .post(HTTP + "/api/profile/experience", expData)
     .then(res => history.push("/dashboard"))
     .catch(err =>
       dispatch({
@@ -153,7 +157,7 @@ export const addExpreience = (expData, history) => dispatch => {
 // add education
 export const addEducation = (eduData, history) => dispatch => {
   axios
-    .post("/api/profile/education", eduData)
+    .post(HTTP + "/api/profile/education", eduData)
     .then(res => history.push("/dashboard"))
     .catch(err =>
       dispatch({

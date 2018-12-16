@@ -9,12 +9,15 @@ import {
   CLEAR_ERRORS
 } from "./types";
 
+const HTTP = "https://react-ngodat97.herokuapp.com";
+
+
 // add post
 export const addPost = postData => dispatch => {
   dispatch(clearErros());
 
   axios
-    .post("/api/posts", postData)
+    .post(HTTP + "/api/posts", postData)
     .then(res =>
       dispatch({
         type: ADD_POST,
@@ -33,7 +36,7 @@ export const addPost = postData => dispatch => {
 export const getPosts = () => dispatch => {
   dispatch(setPostLoading());
   axios
-    .get("/api/posts")
+    .get(HTTP + "/api/posts")
     .then(res => {
       dispatch({
         type: GET_POSTS,
@@ -52,7 +55,7 @@ export const getPosts = () => dispatch => {
 export const getPost = id => dispatch => {
   dispatch(setPostLoading());
   axios
-    .get(`/api/posts/${id}`)
+    .get(HTTP + `/api/posts/${id}`)
     .then(res => {
       dispatch({
         type: GET_POST,
@@ -70,7 +73,7 @@ export const getPost = id => dispatch => {
 //delete post
 export const deletePost = id => dispatch => {
   axios
-    .delete(`/api/posts/${id}`)
+    .delete(HTTP + `/api/posts/${id}`)
     .then(res =>
       dispatch({
         type: DELETE_POST,
@@ -88,7 +91,7 @@ export const deletePost = id => dispatch => {
 // add like
 export const addLike = id => dispatch => {
   axios
-    .post(`/api/posts/like/${id}`)
+    .post(HTTP + `/api/posts/like/${id}`)
     .then(res => dispatch(getPosts()))
     .catch(err =>
       dispatch({
@@ -102,7 +105,7 @@ export const addLike = id => dispatch => {
 export const addComment = (postId, commentData) => dispatch => {
   dispatch(clearErros());
   axios
-    .post(`/api/posts/comment/${postId}`, commentData)
+    .post(HTTP + `/api/posts/comment/${postId}`, commentData)
     .then(res =>
       dispatch({
         type: GET_POST,
@@ -120,7 +123,7 @@ export const addComment = (postId, commentData) => dispatch => {
 // delete comment
 export const deleteComment = (postId, commentId) => dispatch => {
   axios
-    .delete(`/api/posts/comment/${postId}/${commentId}`)
+    .delete(HTTP + `/api/posts/comment/${postId}/${commentId}`)
     .then(res =>
       dispatch({
         type: GET_POST,
@@ -138,7 +141,7 @@ export const deleteComment = (postId, commentId) => dispatch => {
 // remove like
 export const removeLike = id => dispatch => {
   axios
-    .post(`/api/posts/unlike/${id}`)
+    .post(HTTP + `/api/posts/unlike/${id}`)
     .then(res => dispatch(getPosts()))
     .catch(err =>
       dispatch({

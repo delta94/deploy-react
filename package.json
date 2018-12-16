@@ -2,10 +2,12 @@
   "name": "fronend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://datfc97pro.github.io/deploy-react",
   "dependencies": {
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "dotenv": "^6.2.0",
+    "gh-npm ": "^2.0.1",
     "jwt-decode": "^2.2.0",
     "moment": "^2.23.0",
     "prop-types": "^15.6.2",
@@ -22,9 +24,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3000",
+  "proxy": "https://react-ngodat97.herokuapp.com",
   "eslintConfig": {
     "extends": "react-app"
   },
