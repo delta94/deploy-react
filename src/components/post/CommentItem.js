@@ -15,11 +15,11 @@ class CommentItem extends Component {
     return (
       <div className="card card-body mb-3">
         <div className="row">
-          <div className="col-md-2">
+          <div className="col-md-2 col-5">
             <Link to={`/profile/${comment.handle}`}>
               <img
-                style={{ width: "150px", height: "150px" }}
-                className="rounded-circle d-none d-md-block img-fluid"
+                style={{ width: "8em", height: "8em" }}
+                className="rounded-circle img-fluid"
                 src={comment.avatar}
                 alt=""
               />
@@ -27,7 +27,7 @@ class CommentItem extends Component {
             <br />
             <p className="text-center">{comment.name}</p>
           </div>
-          <div className="col-md-10">
+          <div className="col-md-10 col-7">
             <p className="lead">{comment.text}</p>
 
             {comment.user === auth.user.id ? (
