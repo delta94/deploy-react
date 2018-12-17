@@ -89,7 +89,7 @@ export class Login extends Component {
 
                 <a
                   href="https://react-ngodat97.herokuapp.com/auth/google"
-                  className="button mt-3"
+                  className="button mt-3 btn btn-block"
                 >
                   <div>
                     <span className="svgIcon t-popup-svg">
